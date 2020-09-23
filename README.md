@@ -1,4 +1,6 @@
-![image](https://user-images.githubusercontent.com/44872783/92857172-49fa4480-f42f-11ea-923c-80339037493b.png)
+<!-- ![image](https://user-images.githubusercontent.com/44872783/92857172-49fa4480-f42f-11ea-923c-80339037493b.png) -->
+
+![image](https://user-images.githubusercontent.com/44872783/93992285-533cc700-fdc8-11ea-8da1-62595a2f681c.png)
 
 # 教養のコンピュータアルゴリズム（土屋達弘著，共立出版，2009）のサポート情報です．
 
@@ -21,6 +23,7 @@
 
 教科書のプログラムは今でも問題なく動作しますが，JavaScriptも変化しており，新しい書き方や機能が追加されています．
 以下に，現在のJavaScriptの仕様に即したプログラムを掲載します．
+（参考：[MDN web docs](https://developer.mozilla.org/ja/docs/Web/JavaScript)）
 
 一番重要な点は，変数を宣言するためのキーワード`var`の代わりに，`let`を使うようにした点です．
 宣言された変数が有効なプログラムの範囲をスコープといいますが，小さい方がプログラムの理解が容易になります．
