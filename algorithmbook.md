@@ -53,7 +53,7 @@ document.write('Answer: ' + x);
 ```
 [gcd.html](gcd.html)
 
-素数判定アルゴリズム
+### 素数判定アルゴリズム
 入力された整数が素数かどうか判定します．
 ```JavaScript
 var N = parseInt(prompt('N?'), 10);
