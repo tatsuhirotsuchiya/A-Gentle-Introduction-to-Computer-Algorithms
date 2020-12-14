@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8>
+<script type="text/javascript">
+var a = [72, 90, 47, 60, 100, 82, 65, 74]; 
+// var a = ['USA', 'Brazil', 'Spain', 'South Africa'];
+
+var exchanged, tmp;
+document.write(a); 
+
+for (var j = a.length; j >= 2; j -= 1) {
+  exchanged = false;
+  for (var i = 0; i <= j - 2; i += 1) 
+    if (a[i] < a[i + 1]) {
+      tmp = a[i]; a[i] = a[i + 1]; a [i + 1] = tmp;
+      exchanged = true;
+    }
+  document.write('<br>' + j + '<br>'); 
+  document.write(a); 
+  if (exchanged === false)
+    break; 
+}
+// document.write(a); 
+</script>
+</head>
+<body>
+</body>
+</html>

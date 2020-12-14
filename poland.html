@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8>
+<script type="text/javascript">
+var pattern = /(\d+(\.\d+)?|\+|\-|\*|\/)/g;
+var stack =[];
+var input = prompt('Input an expression');
+var result, a, b, o;
+while ((result = pattern.exec(input)) !== null) {
+  o = result[0];
+  if (isFinite(o)) {
+    o = parseFloat(o);
+    stack.push(o);
+  }
+  else {
+    a = stack.pop();
+    b = stack.pop();
+    stack.push(eval(b + o + a));
+ }
+}
+document.write(stack);
+</script>
+</head>
+<body>
+</body>
+</html>

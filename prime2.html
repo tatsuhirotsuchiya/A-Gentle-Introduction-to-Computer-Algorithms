@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8>
+<script type="text/javascript">
+var N = parseInt(prompt('N?'), 10);
+var divisible = false; 
+var sq = Math.sqrt(N);
+for (var i = 2; i <= sq; i += 1) {
+  if (N % i === 0)
+    divisible = true;
+}
+if (divisible === true)
+  document.write(N + ' is not a prime number.'); 
+else
+  document.write(N + ' is a prime number.'); 
+</script>
+</head>
+<body>
+</body>
+</html>

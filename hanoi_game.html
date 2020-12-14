@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tower of Hanoi</title>
+    <script type="text/javascript">
+
+      var posx = 1; 
+      var n; // num of disks 
+      var left = new Array();   // x = 0
+      var center = new Array(); // x = 1
+      var right = new Array();  // x = 2
+      var disk = 0;  // 0 means no disk taken 
+      var ux, uy;
+      var counter;     
+      var isCompleted; 
+
+      function load() {
+        var elmTarget = document.getElementById('target');
+        ctx = elmTarget.getContext('2d');
+        ctx.fillStyle = 'rgb(255, 0, 0)';
+        disk = 0; counter = 0; isCompleted = false; 
+        
+        do {
+          n = parseInt(prompt('how many disks? (3~15)')); 
+        } while (isNaN(n) || n < 3 || n > 15); 
+
+        ux = 75/n; uy = ux *2; 
+        for (var i = n; i > 0; i--) {
+          left.push(i);
+        }
+        depictTowers(); 
+      }
+
+      function depictTowers() {
+        ctx.clearRect(0, 0, 600, 300);
+
+        var i;
+        for (i = 0; i < left.length; i++) 
+          ctx.fillRect(100 - left[i] * ux , 275 - i * uy - uy, left[i] * 2 * ux, uy);
+        for (i = 0; i < center.length; i++) 
+	  ctx.fillRect(300 - center[i] * ux , 275 - i * uy - uy, center[i] * 2 * ux, uy);
+        for (i = 0; i < right.length; i++) 
+	  ctx.fillRect(500 - right[i] * ux , 275 - i * uy -uy, right[i] * 2 * ux, uy);
+	
+        ctx.beginPath();
+        ctx.moveTo(300 + (posx -1)* 200 - 25,20);
+        ctx.lineTo(300 + (posx -1)* 200     ,45);
+        ctx.lineTo(300 + (posx -1)* 200 + 24,20);
+        ctx.fill();
+
+        if (disk != 0) {
+	  ctx.fillRect(100 + posx*200 - disk * ux , 50, disk * 2 * ux, uy);
+        }
+      }
+
+      function key(keyCode) {
+        switch (keyCode) {
+        case 39: // ->
+        if (posx < 2) 
+          posx = posx + 1;
+        break;   // <-
+        case 37:
+        if (posx > 0)
+          posx = posx - 1;
+        break;
+        case 38: // up 
+        if (disk != 0) {
+        }
+        else if (posx == 0 && left.length > 0) {
+          disk = left.pop();
+        }
+        else if (posx == 1 && center.length > 0) {
+          disk = center.pop();
+        }
+        else if (posx == 2 && right.length > 0) {
+          disk = right.pop(); 
+        }
+        break;
+
+      	case 40: // down
+      	if (disk == 0) {
+      	}
+	else if (posx == 0 && (left.length == 0  || left[left.length -1] > disk)) {
+          left.push(disk);
+          disk = 0; counter++; 
+        }
+        else if (posx == 1 && (center.length == 0 || center[center.length -1] > disk)) {
+          center.push(disk);
+          disk = 0; counter++; 
+        }
+        else if (posx == 2 && (right.length == 0 || right[right.length -1] > disk)) {
+          right.push(disk);
+          disk = 0; counter++; 
+        }
+        break;
+
+        default:
+        return;
+        }      
+        depictTowers(); 
+        // completed ? 
+        if (right.length == n && !isCompleted) {
+          alert("Congratulations !  " + counter +  " moves"); 
+          isCompleted = true; 
+	}
+      }
+      
+    </script>
+  </head>
+
+  <body onload="load()" onkeydown="key(event.keyCode)">
+    <canvas id="target" style="border: 5px solid gray" width="600" height="300"></canvas>
+  </body>
+</html>

@@ -116,12 +116,12 @@
         low = i + 1;
       }
     }
-    document.write(found);i 
+    document.write(found);i
 
 なお，分かりやすさ優先なら，`i`は以下のように計算できます（参考．`low`, `high`の値が巨大な場合，オーバーフローする危険性あり．）                                                
 
       let i = Math.floor((low + high) / 2);
-      
+
 
 
 以降については，適宜追加します．

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8>
+<script type="text/javascript">
+function addTree(word, vertex) {
+  var v = vertex;
+  if (v === null)
+    v = {word: word, counter: 1, left: null, right: null};
+  else if (word === v.word)
+    v.counter += 1;
+  else if (word < v.word)
+    v.left = addTree(word, v.left);
+  else
+    v.right = addTree(word, v.right);
+  return v;
+}
+
+function printTree(vertex) {
+  if (vertex === null)
+    return;
+  printTree(vertex.left);
+  document.write(vertex.word + ',' + vertex.counter + '<br>');
+  printTree(vertex.right);
+}
+
+var pattern = /[a-zA-Z]+/g;
+var text = 'now is the time for all good men to come to the aid of their party';
+var result;
+var root = null;
+while ((result = pattern.exec(text)) !== null)
+  root = addTree(result[0], root);
+printTree(root);
+</script>
+</body>
+</html>
