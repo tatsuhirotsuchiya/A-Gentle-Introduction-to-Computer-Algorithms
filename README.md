@@ -4,6 +4,12 @@
 
 # 教養のコンピュータアルゴリズム（土屋達弘著，共立出版，2009）のサポート情報です．
 
+## 本の紹介
+
+1. [紹介ページ](algorithmbook.md)
+
+2. [出版社のページ](https://www.kyoritsu-pub.co.jp/bookdetail/9784320122444)
+
 ## 正誤表
 
 - 29ページ，最後のアルゴリズムのwhileの条件: 「または，前回のループで交換が起らなかった」->「または，前回のループで交換が起った」
@@ -13,10 +19,10 @@
 
 - 107ページ，アルゴリズムの最後にelse部が必要
 
-###
-
-    else  
-        NOを出力する;
+```
+else  
+  NOを出力する;
+```
 
 
 ## 新しい書き方のプログラム
@@ -41,87 +47,88 @@
 ### 第1章
 
 3ページ
-
-    let i = 0;
-    while (i < 10) {
-      document.write('Hello ');
-      document.write('World!');
-      document.write('<br>');
-      i += 1;
-    }
+```JavaScript
+let i = 0;
+while (i < 10) {
+  document.write('Hello ');
+  document.write('World!');
+  document.write('<br>');
+  i += 1;
+}
+```
 
 ### 第2章
 
 13ページ
-
-    let x, y;
-    x = parseFloat(prompt('Celsius?'));
-    // ファーレンハイト度 = 1.8 * セルシアス度 + 32
-    y = 1.8 * x + 32;
-    document.write(x + ' deg C = ' + y + ' deg F');
+```JavaScript
+let x, y;
+x = parseFloat(prompt('Celsius?'));
+// ファーレンハイト度 = 1.8 * セルシアス度 + 32
+y = 1.8 * x + 32;
+document.write(x + ' deg C = ' + y + ' deg F');
+```
 
 21ページ
-
-    let a = [20, 4, 32, 18, 17];
-    let max = a[0];
-    for (let i = 1; i < a.length; i += 1) {
-      if (a[i] > max) {
-        max = a[i];
-      }
-    }
-    document.write(max);
-
+```JavaScript
+let a = [20, 4, 32, 18, 17];
+let max = a[0];
+for (let i = 1; i < a.length; i += 1) {
+  if (a[i] > max) {
+    max = a[i];
+  }
+}
+document.write(max);
+```
 (参考）教科書の`for`, `in` は `for`, `of` で表現できるようになりました．
-
-    let a = [20, 4, 32, 18, 17];
-    let max = a[0];
-    for (const element of a) {
-      if (element > max) {
-        max = element;
-      }
-    }
-    document.write(max);
-
+```JavaScript
+let a = [20, 4, 32, 18, 17];
+let max = a[0];
+for (const element of a) {
+  if (element > max) {
+    max = element;
+  }
+}
+document.write(max);
+```
 
 23ページ． 教科書のプログラムは4行目で`mod`を明示的に宣言すべきでした．
 (下では`let`で宣言していますが，再代入しないので`const`の方が本当はよいです．)
-
-    let x = 51;
-    let y = 27;
-    while (y > 0) {
-      let mod = x % y;
-      x = y;
-      y = mod;
-    }
-    document.write('Answer: ' + x);
-
+```JavaScript
+let x = 51;
+let y = 27;
+while (y > 0) {
+  let mod = x % y;
+  x = y;
+  y = mod;
+}
+document.write('Answer: ' + x);
+```
 ### 第3章
 
 35～36ページ．教科書のプログラムは`i`を明示的に宣言すべきでした．
-
-    let a = [4, 8, 9, 16, 25, 32, 49, 64, 81, 100];
-    let x = parseInt(prompt('x?'), 10);
-    let found = false;
-    let low = 0;
-    let high = a.length - 1;
-    while (low <= high) {
-      let i = low + Math.floor((high - low) / 2);
-      if (a[i] === x) {
-        found = true;
-        break;
-      }
-      if (x < a[i]) {
-        high = i - 1;
-      } else {
-        low = i + 1;
-      }
-    }
-    document.write(found);i
-
+```JavaScript
+let a = [4, 8, 9, 16, 25, 32, 49, 64, 81, 100];
+let x = parseInt(prompt('x?'), 10);
+let found = false;
+let low = 0;
+let high = a.length - 1;
+while (low <= high) {
+  let i = low + Math.floor((high - low) / 2);
+  if (a[i] === x) {
+    found = true;
+    break;
+  }
+  if (x < a[i]) {
+    high = i - 1;
+  } else {
+    low = i + 1;
+  }
+}
+document.write(found);i
+```
 なお，分かりやすさ優先なら，`i`は以下のように計算できます（参考．`low`, `high`の値が巨大な場合，オーバーフローする危険性あり．）                                                
-
-      let i = Math.floor((low + high) / 2);
-
-
+```JavaScript
+let i = Math.floor((low + high) / 2);
+```
 
 以降については，適宜追加します．
