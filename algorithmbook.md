@@ -16,8 +16,8 @@
 <script type="text/javascript">
 document.write('Hello ');
 document.write('World!');
-</head>
 </script>
+</head>
 <body>
 </body>
 </html>
